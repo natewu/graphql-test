@@ -1,13 +1,15 @@
 import { getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
+//import .env
+
 const firebaseConfig = {
-   apiKey: "AIzaSyC4_4u_GI6u3nOCwR3aJOM2xKXQadVJsuk",
-   authDomain: "graphql-express-test.firebaseapp.com",
-   projectId: "graphql-express-test",
-   storageBucket: "graphql-express-test.appspot.com",
-   messagingSenderId: "995676469830",
-   appId: "1:995676469830:web:8a60b83614a7c10ec02847"
+   apiKey: process.env.API,
+   authDomain: process.env.AUTH_DOMAIN,
+   projectId: process.env.PROJECT_ID,
+   storageBucket: process.env.STORAGE_BUCKET,
+   messagingSenderId: process.env.SENDER_ID,
+   appId: process.env.APP_ID,
 };
 
 export const firebase = initializeApp(firebaseConfig);
