@@ -19,20 +19,6 @@ const RootQuery = new GraphQLObjectType({
 
             try{
                const res: any = await getDocs(collection(db, "users"))
-               // .then(snapshot => {
-
-               //    snapshot.docs.map((doc: any) => {
-               //       users.push({
-               //          id: doc.id,
-               //          ...doc.data()
-               //       });
-               //    })
-               // })
-               // .then(() => {
-               //    console.log(users);
-               //    return users;
-               // });
-
                res.docs.map((doc: any) => {
                   users.push({
                      id: doc.id,
@@ -56,20 +42,12 @@ const RootQuery = new GraphQLObjectType({
             id: {type: GraphQLString}
          },
          resolve: async (parent, args) => {
-            let user:any = {};
-
             try{
-               getDoc(doc(db, "users", args.id))
-               .then(doc => {
-                  return {
-                     id: doc.id,
-                     ...doc.data()
-                  }
-               })
-               .then(() => {
-                  console.log("User:", user);
-                  return user;
-               })
+               const res = await getDoc(doc(db, "users", args.id))
+               return {
+                  id: res.id,
+                  ...res.data()
+               }
             }
             catch(error){
                console.log(error);
