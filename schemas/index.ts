@@ -33,7 +33,6 @@ const RootQuery = new GraphQLObjectType({
             catch(error){
                console.log(error);
             }
-            // return data;
          }
       },
       getUser: {

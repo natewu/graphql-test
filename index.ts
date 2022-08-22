@@ -9,7 +9,10 @@ import schema from "./schemas";
 const app: Express = express();
 const port = process.env.PORT || 3000;
 const corsOptions: cors.CorsOptions = {
-   origin: "http://localhost:3000",
+   origin: [
+      "http://localhost:3000",
+      "http://localhost:3001",
+   ],
    credentials: true
 }
 
